@@ -1,14 +1,15 @@
 (function(){
 const pages=[['index.html','Home'],['about.html','About'],['products.html','Products'],['solutions.html','Solutions'],['technology.html','Technology'],['contact.html','Contact']];
 const cur=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+const logo='<a href="index.html" class="logo" aria-label="Green Systems"><img src="img/o/logo.png" alt="Green Systems" width="105" height="30"></a>';
 const nav=document.createElement('nav');
-nav.innerHTML=`<div class="pill"><a href="index.html" class="logo"><i>⚡</i>BIOENERGY</a><button class="burger" aria-label="Menu">☰</button><div class="nl">${pages.slice(0,5).map(p=>`<a href="${p[0]}" class="${p[0]===cur?'act':''}">${p[1]}</a>`).join('')}</div><a href="contact.html" class="btn lime">Get Started</a></div>`;
+nav.innerHTML=`<div class="pill">${logo}<button class="burger" aria-label="Menu">☰</button><div class="nl">${pages.slice(0,5).map(p=>`<a href="${p[0]}" class="${p[0]===cur?'act':''}">${p[1]}</a>`).join('')}</div><a href="contact.html" class="btn lime">Get Started</a></div>`;
 document.body.prepend(nav);
 nav.querySelector('.burger').onclick=()=>nav.querySelector('.nl').classList.toggle('o');
 const f=document.createElement('footer');
-f.innerHTML=`<div class="w"><div class="ft"><div><h4>Pioneering clean heat and power from organic waste.</h4><a href="mailto:info@bioenergy.co.in">info@bioenergy.co.in</a><a href="tel:+919327536669">+91 93275 36669</a><a href="tel:+918949714218">+91 89497 14218</a></div>
+f.innerHTML=`<div class="w"><div class="ft"><div>${logo}<h4 style="margin-top:22px">Transforming waste into clean energy for a healthier tomorrow.</h4><a href="mailto:info@bioenergy.co.in">info@bioenergy.co.in</a><a href="tel:+919327536669">+91 93275 36669</a><a href="tel:+918949714218">+91 89497 14218</a></div>
 <div><h5>Pages</h5>${pages.map(p=>`<a href="${p[0]}">${p[1]}</a>`).join('')}</div>
-<div><h5>Highlights</h5><a href="technology.html">1500°C furnace</a><a href="solutions.html">Stubble to energy</a><a href="products.html">Plastic recycling</a><a href="about.html">Gold Medal, IIGP-2013</a></div></div></div><div class="fg" aria-hidden="true">BIOENERGY</div>`;
+<div><h5>Highlights</h5><a href="technology.html">150°C to 1500°C furnace</a><a href="solutions.html">Energy from bio-waste</a><a href="products.html">Plastic recycling</a><a href="about.html">Gold Medal, IIGP-2013</a></div></div></div><div class="fg" aria-hidden="true">BIOENERGY</div>`;
 document.body.appendChild(f);
 const wa=document.createElement('a');wa.className='wa';wa.href='https://wa.me/919327536669';wa.setAttribute('aria-label','WhatsApp');wa.textContent='💬';document.body.appendChild(wa);
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.1});
